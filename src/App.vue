@@ -1,5 +1,11 @@
 <script>
 	export default {
+		 globalData: {
+serverUrl: 'http://8.134.163.22:8000/user',
+gameUrl:'http://8.134.163.22:8000/game',
+
+nickname:''
+	},
 		onLaunch: function() {
 			console.log('App Launch')
 		},
