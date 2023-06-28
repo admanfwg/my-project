@@ -19,6 +19,7 @@ export default {
   },
   data() {
     return {
+
       url: '',
       token: '',
       obj: {},
@@ -34,8 +35,25 @@ export default {
 
     this.url = getApp().globalData.gameUrl
     this.token = this.msg
-    
-    
+    if (this.isGetRoomList && !this.timer) {
+
+      this.timer = setInterval(() => {
+        console.log(this.isGetRoomList)
+        this.getRoomList()
+
+      }, 10000)
+    }
+
+
+
+  },
+  beforeDestroy() {
+
+
+    if (this.timer) {
+      clearInterval(this.timer)
+      this.timer = null
+    }
 
 
   },
@@ -68,30 +86,31 @@ export default {
 
 
   },
-  watch: {
-    'props.isGetRoomList': {
-      handle: function (newVal, oldVal) {
-        console.log(this.isGetRoomList)
-        if (this.isGetRoomList && !this.timer) {
+  // watch: {
+  //   isGetRoomList: {
 
-          this.timer = setInterval(() => {
-            console.log(this.isGetRoomList)
-            this.getRoomList()
-            if (!this.isGetRoomList) {
-              if (this.timer) {
-                clearInterval(this.timer)
-                this.timer = null
-              }
+  //     handle: function (newVal, oldVal) {
+  //       console.log(this.isGetRoomList)
+  //       if (this.isGetRoomList && !this.timer) {
 
-            }
-          }, 10000)
+  //         this.timer = setInterval(() => {
+  //           console.log(this.isGetRoomList)
+  //           this.getRoomList()
+  //           if (!this.isGetRoomList) {
+  //             if (this.timer) {
+  //               clearInterval(this.timer)
+  //               this.timer = null
+  //             }
 
-        }
-      },
-      deep: true
-    }
+  //           }
+  //         }, 10000)
 
-  }
+  //       }
+  //     },
+  //     deep: true
+  //   }
+
+  // }
 
 
 }

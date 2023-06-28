@@ -5,12 +5,12 @@
     </view>
 
     <view class="home" v-if="seen">
-      <button class="createRoomBtn" @click=" isSearch = false,isCreateRoom = true">创建房间</button>
+      <button class="createRoomBtn" @click=" isSearch = false, isCreateRoom = true">创建房间</button>
       <button class="searchRoomBtn" @click="isSearch = true, isCreateRoom = false">搜索房间</button>
 
 
-      <view class="homeList" v-show="!isCreateRoom && !isSearch">
-        <homeList :msg="token" :isGetRoomList="!isCreateRoom && !isSearch" > </homeList>
+      <view class="homeList" v-if="!isCreateRoom && !isSearch">
+        <homeList :msg="token" :isGetRoomList="!isCreateRoom && !isSearch"> </homeList>
       </view>
 
 
@@ -165,7 +165,7 @@ export default {
     //     }
     //   });
     // },
-    
+
     getType: function (cancel) {
       this.isCreateRoom = cancel
 
