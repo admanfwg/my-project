@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="content">
 
 
     <view class="uer" v-for="item in msg1.data.users" :key="item.id">
@@ -11,12 +11,12 @@
     </view>
     <view class="control">
       <view v-if="seen">
-        <view>房主设置</view>
+        <view>房主设置<button>设置</button></view>
         <view>房主开始<button class="start" @click="star">开始</button></view>
         
       </view>
       <view v-if="!seen" @click="ready"><button @click="ready">准备</button></view>
-   <button class="leave" @click="leave">退出</button>
+      <button class="leave" @click="leave">退出</button>
     </view>
   </view>
 </template>
@@ -149,7 +149,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.content{
+display: flex;
+
 .control {
+
+  display: flex;
+  flex-direction: row;
   button {
     margin: 40rpx 0;
 
@@ -176,5 +182,7 @@ export default {
     margin-right: 80rpx;
     background: linear-gradient(to bottom, rgba(1, 167, 240, 100%), rgba(128, 211, 248, 100%));
   }
+
+}
 }
 </style>

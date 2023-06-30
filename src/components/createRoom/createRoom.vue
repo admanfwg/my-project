@@ -121,7 +121,7 @@ export default {
 
     },
     userIntoRoom: function () {
-      let websocket = new WebsocketTask('ws://8.134.163.22:8083/v1/userIntoRoom?room_id=' + this.room_id + '&token=' + this.token, 5000)
+      let websocket = new WebsocketTask('ws://8.134.163.22:8000/game/v1/userIntoRoom?room_id=' + this.room_id + '&token=' + this.token, 5000)
       store.commit("updateWebsocket", websocket)
 
     },
